@@ -14,7 +14,7 @@ class _BottomBarState extends State<BottomBar> {
     return Scaffold(
       body: _buildBody(),
       bottomNavigationBar: _buildBottomNavBar(),
-      backgroundColor: Colors.black
+      backgroundColor: Colors.transparent
     );
   }
 
@@ -49,7 +49,7 @@ class _BottomBarState extends State<BottomBar> {
         selectedFontSize: 10,
         unselectedFontSize: 10,
         iconSize: 30,
-        items: [
+        items: const [
           BottomNavigationBarItem(
             icon: Icon(Icons.movie_creation_outlined),
             label: 'MOVIES',
