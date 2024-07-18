@@ -59,7 +59,7 @@ class _CinemasScreenState extends State<CinemasScreen>
   }
 
   Widget _buildFavoriteTab() {
-    return Center(
+    return const Center(
       child: Text('Favorite Tab', style: TextStyle(color: Colors.white)),
     );
   }
@@ -69,72 +69,56 @@ class _CinemasScreenState extends State<CinemasScreen>
       color: Colors.black,
       child: Column(
         children: [
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Row(
-              children: [
-                Icon(Icons.location_on, color: Colors.yellow),
-                SizedBox(width: 10),
-                Expanded(
-                  child: TextButton(
-                    onPressed: () {
-                      // Add functionality to find nearby cinema
-                    },
-                    style: TextButton.styleFrom(
-                      backgroundColor: Colors.yellow,
-                    ),
-                    child: Text('Find my nearby cinema'),
-                  ),
-                ),
-              ],
-            ),
-          ),
+          // Padding(
+          //   padding: const EdgeInsets.all(8.0),
+          //   child: Row(
+          //     children: [
+          //       Icon(Icons.location_on, color: Colors.yellow),
+          //       SizedBox(width: 10),
+          //       Expanded(
+          //         child: TextButton(
+          //           onPressed: () {
+          //             // Add functionality to find nearby cinema
+          //           },
+          //           style: TextButton.styleFrom(
+          //             // backgroundColor: Colors.yellow,
+          //           ),
+          //           child: Text('Find my nearby cinema',style: TextStyle(color: Colors.white),),
+          //         ),
+          //       ),
+          //     ],
+          //   ),
+          // ),
           Expanded(
             child: ListView(
               children: [
-                ExpansionTile(
-                  leading: Icon(Icons.location_on, color: Colors.yellow),
-                  title: Text(
+                 ExpansionTile(
+                  // leading: Icon(Icons.location_on, color: Colors.yellow),
+                  leading: Image.asset('assets/images/logo-major-cm.png'),
+                  title: const Text(
                     'MAJOR CINEPLEX BY SMART',
                     style: TextStyle(
                         color: Colors.white, fontWeight: FontWeight.bold),
                   ),
-                  children: const [
-                    ListTile(
-                      leading: Icon(Icons.location_on, color: Colors.white),
-                      title: Text('Major Aeon Mall Phnom Penh',
-                          style: TextStyle(color: Colors.white)),
-                      trailing: Icon(Icons.star_border, color: Colors.white),
+                  children: [
+                    _CinemaListTile(
+                      title: 'Major Aeon Mall Phnom Penh',
                     ),
-                    ListTile(
-                      leading: Icon(Icons.location_on, color: Colors.white),
-                      title: Text('Major Cineplex Aeon Sen Sok',
-                          style: TextStyle(color: Colors.white)),
-                      trailing: Icon(Icons.star_border, color: Colors.white),
+                    _CinemaListTile(
+                      title: 'Major Cineplex Aeon Sen Sok',
                     ),
-                    ListTile(
-                      leading: Icon(Icons.location_on, color: Colors.white),
-                      title: Text('Major Cineplex Aeon Mean Chey',
-                          style: TextStyle(color: Colors.white)),
-                      trailing: Icon(Icons.star_border, color: Colors.white),
+                    _CinemaListTile(
+                      title: 'Major Cineplex Aeon Mean Chey',
                     ),
-                    ListTile(
-                      leading: Icon(Icons.location_on, color: Colors.white),
-                      title: Text('Major Cineplex Sorya',
-                          style: TextStyle(color: Colors.white)),
-                      trailing: Icon(Icons.star_border, color: Colors.white),
+                    _CinemaListTile(
+                      title: 'Major Cineplex Sorya',
                     ),
-                    ListTile(
-                      leading: Icon(Icons.location_on, color: Colors.white),
-                      title: Text('Major Platinum Siem Reap',
-                          style: TextStyle(color: Colors.white)),
-                      trailing: Icon(Icons.star_border, color: Colors.white),
+                    _CinemaListTile(
+                      title: 'Major Platinum Siem Reap',
                     ),
-                    ListTile(
-                        leading: Icon(Icons.location_on, color: Colors.white),
-                        title: Text('Major Cineplex Big C Poipet',
-                            style: TextStyle(color: Colors.white)),
-                        trailing: Icon(Icons.star_border, color: Colors.white)),
+                    _CinemaListTile(
+                      title: 'Major Cineplex Big C Poipet',
+                    ),
                   ],
                 ),
               ],
@@ -146,8 +130,29 @@ class _CinemasScreenState extends State<CinemasScreen>
   }
 
   Widget _buildSystemTypeTab() {
-    return Center(
+    return const Center(
       child: Text('System Type Tab', style: TextStyle(color: Colors.white)),
+    );
+  }
+}
+
+class _CinemaListTile extends StatelessWidget {
+  final String title;
+
+  const _CinemaListTile({required this.title});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      color: Colors.grey[800], // Change this to your desired grey color
+      child: ListTile(
+        // leading: Icon(Icons.location_on, color: Colors.white),
+        title: Text(
+          title,
+          style: const TextStyle(color: Colors.white),
+        ),
+        trailing: const Icon(Icons.star_border, color: Colors.white),
+      ),
     );
   }
 }
