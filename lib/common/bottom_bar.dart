@@ -17,7 +17,7 @@ class _BottomBarState extends State<BottomBar> {
     return Scaffold(
       body: _buildBody(),
       bottomNavigationBar: _buildBottomNavBar(),
-      backgroundColor: Colors.black,
+      backgroundColor: Colors.transparent
     );
   }
 
