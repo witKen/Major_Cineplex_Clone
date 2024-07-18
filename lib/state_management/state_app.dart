@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:major_cineplex/feature/home/home_screen.dart';
+import 'package:major_cineplex/common/bottom_bar.dart';
 import 'package:major_cineplex/state_management/languagesProvider.dart';
 import 'package:provider/provider.dart';
 
@@ -18,7 +18,7 @@ class StateApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: HomeScreen(),
+      home: BottomBar(),
     );
   }
 }

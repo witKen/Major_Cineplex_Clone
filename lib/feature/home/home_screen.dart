@@ -17,65 +17,12 @@ class _HomeScreenState extends State<HomeScreen> {
         title: 'Major',
         actions: [
           IconButton(
-            onPressed: (){}, icon: Icon(Icons.menu, color: Colors.orange))
+            onPressed: (){}, 
+            icon: const Icon(Icons.menu, color: Colors.orange)),
         ],  
       ),
-      backgroundColor: Colors.black87,
-      bottomNavigationBar: _buildBottomNavBar(),
+      backgroundColor: Colors.black,
     );
   }
 
-  Widget _buildBody(){
-    return IndexedStack(
-      index: _navIndex,
-      children: [
-        Container(color: Colors.purple,),
-        Container(color: Colors.black,),
-        Container(color: Colors.pink,),
-        Container(color: Colors.white,),
-      ],
-    );
-  }
-
-  int _navIndex = 0;
-
-  Widget _buildBottomNavBar(){
-    return Padding(
-      padding: const EdgeInsets.only(bottom: 8),
-      child: BottomNavigationBar(
-        currentIndex: _navIndex,
-        onTap: (index){
-          setState(() {
-            _navIndex = index;
-          });
-        },
-        type: BottomNavigationBarType.fixed,
-        selectedItemColor: Colors.yellow,
-        unselectedItemColor: Colors.white,
-        backgroundColor: Colors.transparent,
-        selectedFontSize: 10,
-        unselectedFontSize: 10,
-        iconSize: 30,
-        items: [
-          BottomNavigationBarItem(
-            icon: Icon(Icons.movie_creation_outlined),
-            label: 'MOVIES',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.location_on_outlined),
-            label: 'CINEMAS',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.local_offer_outlined),
-            label: 'PROMOTIONS',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.settings_outlined),
-            label: 'SETTING',
-              
-          ),
-        ]
-      )
-    );
-  }
 }
