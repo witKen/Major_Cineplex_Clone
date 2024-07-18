@@ -6,6 +6,8 @@ class GradientAppBar extends StatelessWidget implements PreferredSizeWidget {
   final List<double> gradientStops;
   final Widget? leading;
   final List<Widget>? actions;
+  final PreferredSizeWidget? bottom;
+  final bool primary;
 
   const GradientAppBar({
     Key? key,
@@ -14,10 +16,13 @@ class GradientAppBar extends StatelessWidget implements PreferredSizeWidget {
     this.gradientStops = const [0.0, 1.0],
     this.leading,
     this.actions,
+    this.bottom,
+    this.primary = true,
   }) : super(key: key);
 
   @override
-  Size get preferredSize => const Size.fromHeight(kToolbarHeight);
+  Size get preferredSize =>
+      Size.fromHeight(kToolbarHeight + (bottom?.preferredSize.height ?? 0.0));
 
   @override
   Widget build(BuildContext context) {
@@ -31,20 +36,22 @@ class GradientAppBar extends StatelessWidget implements PreferredSizeWidget {
         ),
       ),
       child: AppBar(
-          title: Text(
-            title,
-            style: TextStyle(
-              color: Colors.orange,
-              fontSize: 24,
-              fontWeight: FontWeight.bold,
-            ),
+        title: Text(
+          title,
+          style: const TextStyle(
+            color: Colors.orange,
+            fontSize: 24,
+            fontWeight: FontWeight.bold,
           ),
+        ),
         centerTitle: true,
         titleSpacing: 0.0,
         leading: leading,
         actions: actions,
         backgroundColor: Colors.transparent,
         elevation: 0,
+        bottom: bottom,
+        primary: primary,
       ),
     );
   }
