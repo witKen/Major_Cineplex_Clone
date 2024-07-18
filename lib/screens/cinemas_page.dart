@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:major_cineplex/common/gradient_app_bar.dart';
 
 class CinemasScreen extends StatefulWidget {
-  const CinemasScreen({Key? key}) : super(key: key);
+  const CinemasScreen({super.key});
 
   @override
   _CinemasScreenState createState() => _CinemasScreenState();
@@ -39,6 +39,7 @@ class _CinemasScreenState extends State<CinemasScreen>
           controller: _tabController,
           labelColor: Colors.orange,
           unselectedLabelColor: Colors.white,
+          dividerHeight: 0,
           tabs: const [
             Tab(text: 'FAVORITE'),
             Tab(text: 'CINEMAS'),
@@ -47,6 +48,7 @@ class _CinemasScreenState extends State<CinemasScreen>
           indicatorColor: Colors.orange,
         ),
       ),
+      backgroundColor: Colors.black,
       body: TabBarView(
         controller: _tabController,
         children: [
@@ -59,7 +61,7 @@ class _CinemasScreenState extends State<CinemasScreen>
   }
 
   Widget _buildFavoriteTab() {
-    return Center(
+    return const Center(
       child: Text('Favorite Tab', style: TextStyle(color: Colors.white)),
     );
   }
@@ -73,8 +75,8 @@ class _CinemasScreenState extends State<CinemasScreen>
             padding: const EdgeInsets.all(8.0),
             child: Row(
               children: [
-                Icon(Icons.location_on, color: Colors.yellow),
-                SizedBox(width: 10),
+                const Icon(Icons.location_on, color: Colors.yellow),
+                const SizedBox(width: 10),
                 Expanded(
                   child: TextButton(
                     onPressed: () {
@@ -83,7 +85,7 @@ class _CinemasScreenState extends State<CinemasScreen>
                     style: TextButton.styleFrom(
                       backgroundColor: Colors.yellow,
                     ),
-                    child: Text('Find my nearby cinema'),
+                    child: const Text('Find my nearby cinema'),
                   ),
                 ),
               ],
@@ -91,50 +93,52 @@ class _CinemasScreenState extends State<CinemasScreen>
           ),
           Expanded(
             child: ListView(
-              children: [
+              children: const [
                 ExpansionTile(
-                  leading: Icon(Icons.location_on, color: Colors.yellow),
+                  leading: Icon(Icons.location_on, color: Colors.orange),
                   title: Text(
                     'MAJOR CINEPLEX BY SMART',
                     style: TextStyle(
-                        color: Colors.white, fontWeight: FontWeight.bold),
+                      color: Colors.white, 
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
-                  children: const [
+                  children: [
                     ListTile(
-                      leading: Icon(Icons.location_on, color: Colors.white),
+                      leading: Text(''),
                       title: Text('Major Aeon Mall Phnom Penh',
                           style: TextStyle(color: Colors.white)),
                       trailing: Icon(Icons.star_border, color: Colors.white),
                     ),
                     ListTile(
-                      leading: Icon(Icons.location_on, color: Colors.white),
+                      leading: Text(''),
                       title: Text('Major Cineplex Aeon Sen Sok',
                           style: TextStyle(color: Colors.white)),
                       trailing: Icon(Icons.star_border, color: Colors.white),
                     ),
                     ListTile(
-                      leading: Icon(Icons.location_on, color: Colors.white),
+                      leading: Text(''),
                       title: Text('Major Cineplex Aeon Mean Chey',
                           style: TextStyle(color: Colors.white)),
                       trailing: Icon(Icons.star_border, color: Colors.white),
                     ),
                     ListTile(
-                      leading: Icon(Icons.location_on, color: Colors.white),
+                      leading: Text(''),
                       title: Text('Major Cineplex Sorya',
                           style: TextStyle(color: Colors.white)),
                       trailing: Icon(Icons.star_border, color: Colors.white),
                     ),
                     ListTile(
-                      leading: Icon(Icons.location_on, color: Colors.white),
+                      leading: Text(''),
                       title: Text('Major Platinum Siem Reap',
                           style: TextStyle(color: Colors.white)),
                       trailing: Icon(Icons.star_border, color: Colors.white),
                     ),
                     ListTile(
-                        leading: Icon(Icons.location_on, color: Colors.white),
-                        title: Text('Major Cineplex Big C Poipet',
-                            style: TextStyle(color: Colors.white)),
-                        trailing: Icon(Icons.star_border, color: Colors.white)),
+                      leading: Text(''),
+                      title: Text('Major Cineplex Big C Poipet',
+                          style: TextStyle(color: Colors.white)),
+                      trailing: Icon(Icons.star_border, color: Colors.white)),
                   ],
                 ),
               ],
@@ -146,7 +150,7 @@ class _CinemasScreenState extends State<CinemasScreen>
   }
 
   Widget _buildSystemTypeTab() {
-    return Center(
+    return const Center(
       child: Text('System Type Tab', style: TextStyle(color: Colors.white)),
     );
   }
