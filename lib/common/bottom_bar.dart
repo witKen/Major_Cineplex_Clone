@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:major_cineplex/feature/home/home_screen.dart';
+import 'package:major_cineplex/screens/cinemas_page.dart';
 
 class BottomBar extends StatefulWidget {
   const BottomBar({super.key});
@@ -9,35 +10,39 @@ class BottomBar extends StatefulWidget {
 }
 
 class _BottomBarState extends State<BottomBar> {
+  int _pageIndex = 0;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: _buildBody(),
       bottomNavigationBar: _buildBottomNavBar(),
-      backgroundColor: Colors.black
+      backgroundColor: Colors.black,
     );
   }
 
-  Widget _buildBody(){
+  Widget _buildBody() {
     return IndexedStack(
       index: _pageIndex,
       children: [
         const HomeScreen(),
-        Container(color: Colors.black,),
-        Container(color: Colors.pink,),
-        Container(color: Colors.white,),
+        const CinemasScreen(),
+        Container(
+          color: const Color.fromARGB(255, 30, 189, 233),
+        ),
+        Container(
+          color: Colors.white,
+        ),
       ],
     );
   }
 
-  int _pageIndex = 0;
-
-  Widget _buildBottomNavBar(){
+  Widget _buildBottomNavBar() {
     return Padding(
       padding: const EdgeInsets.only(bottom: 8),
       child: BottomNavigationBar(
         currentIndex: _pageIndex,
-        onTap: (index){
+        onTap: (index) {
           setState(() {
             _pageIndex = index;
           });
@@ -49,7 +54,7 @@ class _BottomBarState extends State<BottomBar> {
         selectedFontSize: 10,
         unselectedFontSize: 10,
         iconSize: 30,
-        items: [
+        items: const [
           BottomNavigationBarItem(
             icon: Icon(Icons.movie_creation_outlined),
             label: 'MOVIES',
@@ -65,10 +70,9 @@ class _BottomBarState extends State<BottomBar> {
           BottomNavigationBarItem(
             icon: Icon(Icons.settings_outlined),
             label: 'SETTING',
-              
           ),
-        ]
-      )
+        ],
+      ),
     );
   }
 }
