@@ -148,9 +148,9 @@ class _SettingScreenState extends State<SettingScreen> with SingleTickerProvider
 
 class DeveloperTab extends StatelessWidget {
   final List<Profile> profiles = [
-    Profile('', 'Kuong Sok Ken', 'Software Developer'),
+    Profile('https://avatars.githubusercontent.com/u/155934760?v=4', 'Kuong Sok Ken', 'Software Developer'),
     Profile('https://media.licdn.com/dms/image/D5603AQFhSpN48-plZA/profile-displayphoto-shrink_200_200/0/1693515902907?e=2147483647&v=beta&t=BQV2L8rSvMJsDum8XImcjxd5QIahhR5Np5eAwpHJWaM', 'Sophat Sophana', 'Software Developer'),
-    Profile('https://media.licdn.com/dms/image/D5603AQFhSpN48-plZA/profile-displayphoto-shrink_200_200/0/1693515902907?e=2147483647&v=beta&t=BQV2L8rSvMJsDum8XImcjxd5QIahhR5Np5eAwpHJWaM', 'Meng Oudom', 'Software Developer'),
+    Profile('https://media.licdn.com/dms/image/D5603AQHCRM8vqcPLFQ/profile-displayphoto-shrink_200_200/0/1686106747381?e=1726704000&v=beta&t=YVr9n8LJy0QNLs_ea_GCwYxRGmU8VwKUyAo0fmCCUfY', 'Meng Oudom', 'Software Developer'),
   ];
 
   DeveloperTab({super.key});
