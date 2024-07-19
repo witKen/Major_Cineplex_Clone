@@ -38,10 +38,10 @@ class GradientAppBar extends StatelessWidget implements PreferredSizeWidget {
       child: AppBar(
         title: title is String
             ? Text(
-                title,
+                title.toUpperCase(),
                 style: const TextStyle(
-                  color: Colors.orange,
-                  fontSize: 24,
+                  color: Color.fromARGB(255, 255, 255, 255),
+                  fontSize: 20,
                   fontWeight: FontWeight.bold,
                 ),
               )
