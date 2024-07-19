@@ -93,7 +93,8 @@ class _CinemasScreenState extends State<CinemasScreen>
             child: ListView(
               children: [
                 ExpansionTile(
-                  leading: Icon(Icons.location_on, color: Colors.yellow),
+                  // leading: Icon(Icons.location_on, color: Colors.yellow),
+                  leading: Image.asset('assets/images/major_by_smart.png'),
                   title: Text(
                     'MAJOR CINEPLEX BY SMART',
                     style: TextStyle(
