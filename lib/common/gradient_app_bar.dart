@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class GradientAppBar extends StatelessWidget implements PreferredSizeWidget {
-  final String title;
+  final dynamic title; 
   final List<Color> gradientColors;
   final List<double> gradientStops;
   final Widget? leading;
@@ -36,14 +36,16 @@ class GradientAppBar extends StatelessWidget implements PreferredSizeWidget {
         ),
       ),
       child: AppBar(
-        title: Text(
-          title,
-          style: const TextStyle(
-            color: Colors.orange,
-            fontSize: 24,
-            fontWeight: FontWeight.bold,
-          ),
-        ),
+        title: title is String
+            ? Text(
+                title,
+                style: const TextStyle(
+                  color: Colors.orange,
+                  fontSize: 24,
+                  fontWeight: FontWeight.bold,
+                ),
+              )
+            : title,
         centerTitle: true,
         titleSpacing: 0.0,
         leading: leading,
