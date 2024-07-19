@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:major_cineplex/common/gradient_app_bar.dart';
+import 'package:major_cineplex/state_management/language_const.dart';
+import 'package:major_cineplex/state_management/languagesProvider.dart';
+import 'package:provider/provider.dart';
 
 class CinemasScreen extends StatefulWidget {
   const CinemasScreen({super.key});
@@ -10,6 +13,8 @@ class CinemasScreen extends StatefulWidget {
 
 class _CinemasScreenState extends State<CinemasScreen>
     with SingleTickerProviderStateMixin {
+  int _langIndex = 0;
+  Language _lang = Khmer();
   late TabController _tabController;
 
   @override
@@ -26,9 +31,11 @@ class _CinemasScreenState extends State<CinemasScreen>
 
   @override
   Widget build(BuildContext context) {
+    _langIndex = context.watch<LanguagesProvider>().langIndex;
+    _lang = context.watch<LanguagesProvider>().lang;
     return Scaffold(
       appBar: GradientAppBar(
-        title: 'Cinemas',
+        title: _lang.cineLabel,
         actions: [
           IconButton(
             onPressed: () {},

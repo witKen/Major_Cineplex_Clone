@@ -26,13 +26,10 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
       body: NestedScrollView(
         headerSliverBuilder: (context, innerBoxIsScrolled) => [
           SliverAppBar(
-            title: const Text(
-              'Major', 
-              style: TextStyle(
-                color: Colors.orange,     
-                fontSize: 24,
-                fontWeight: FontWeight.bold,
-              ),
+            title: Image.asset(
+              'assets/images/major_clean_logo.png',
+              width: 100,
+              height: 35,
             ),
             elevation: 0,
             titleSpacing: 0,

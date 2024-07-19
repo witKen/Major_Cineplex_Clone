@@ -3,6 +3,9 @@ import 'package:major_cineplex/feature/home/home_screen.dart';
 import 'package:major_cineplex/screens/cinemas_page.dart';
 import 'package:major_cineplex/screens/promo_screen.dart';
 import 'package:major_cineplex/screens/setting_screen.dart';
+import 'package:major_cineplex/state_management/language_const.dart';
+import 'package:major_cineplex/state_management/languagesProvider.dart';
+import 'package:provider/provider.dart';
 
 class BottomBar extends StatefulWidget {
   const BottomBar({super.key});
@@ -13,9 +16,13 @@ class BottomBar extends StatefulWidget {
 
 class _BottomBarState extends State<BottomBar> {
   int _pageIndex = 0;
+  int _langIndex = 0;
+  Language _lang = Khmer();
 
   @override
   Widget build(BuildContext context) {
+    _langIndex = context.watch<LanguagesProvider>().langIndex;
+    _lang = context.watch<LanguagesProvider>().lang;
     return Scaffold(
       body: _buildBody(),
       bottomNavigationBar: _buildBottomNavBar(),
@@ -49,25 +56,25 @@ class _BottomBarState extends State<BottomBar> {
         selectedItemColor: Colors.yellow,
         unselectedItemColor: Colors.white,
         backgroundColor: Colors.transparent,
-        selectedFontSize: 10,
-        unselectedFontSize: 10,
+        selectedFontSize: _langIndex == 1 ? 12 : 15,
+        unselectedFontSize: _langIndex == 1 ? 12 : 15,
         iconSize: 30,
-        items: const [
+        items: [
           BottomNavigationBarItem(
-            icon: Icon(Icons.movie_creation_outlined),
-            label: 'MOVIES',
+            icon: const Icon(Icons.movie_creation_outlined),
+            label: _lang.movieLabel,
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.location_on_outlined),
-            label: 'CINEMAS',
+            icon: const Icon(Icons.location_on_outlined),
+            label: _lang.cineLabel,
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.local_offer_outlined),
-            label: 'PROMOTIONS',
+            icon: const Icon(Icons.local_offer_outlined),
+            label: _lang.promoLabel,
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.settings_outlined),
-            label: 'SETTING',
+            icon: const Icon(Icons.settings_outlined),
+            label: _lang.settingLabel,
           ),
         ],
       ),

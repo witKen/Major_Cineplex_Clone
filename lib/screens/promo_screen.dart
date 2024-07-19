@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:major_cineplex/common/gradient_app_bar.dart';
+import 'package:major_cineplex/state_management/language_const.dart';
+import 'package:major_cineplex/state_management/languagesProvider.dart';
+import 'package:provider/provider.dart';
 
 class PromoScreen extends StatefulWidget {
   @override
@@ -7,12 +10,14 @@ class PromoScreen extends StatefulWidget {
 }
 
 class _PromoScreenState extends State<PromoScreen> with SingleTickerProviderStateMixin {
+  int _langIndex = 0;
+  Language _lang = Khmer();
   late TabController _tabController;
 
   @override
   void initState() {
     super.initState();
-    _tabController = TabController(length: 3, vsync: this);
+    _tabController = TabController(length: 2, vsync: this);
   }
 
   @override
@@ -23,15 +28,17 @@ class _PromoScreenState extends State<PromoScreen> with SingleTickerProviderStat
 
   @override
   Widget build(BuildContext context) {
+    _langIndex = context.watch<LanguagesProvider>().langIndex;
+    _lang = context.watch<LanguagesProvider>().lang;
     return Scaffold(
       backgroundColor: Colors.black,
       appBar: GradientAppBar(
-        title: 'Promotions',
+        title: _lang.promoLabel,
         bottom: TabBar(
           controller: _tabController,
-          tabs: const [
-            Tab(text: 'Online Promotion'),
-            Tab(text: 'On Ground Promotion'),
+          tabs: [
+            Tab(text: _lang.onlinePromoLabel),
+            Tab(text: _lang.onGroundPromoLabel),
           ],
           indicatorColor: Colors.yellow,
           labelColor: Colors.yellow,
@@ -41,9 +48,9 @@ class _PromoScreenState extends State<PromoScreen> with SingleTickerProviderStat
       ),
       body: TabBarView(
         controller: _tabController,
-        children: const [
-          Center(child: Text('Online Promotion Content', style: TextStyle(color: Colors.white))),
-          Center(child: Text('On Ground Promotion Content', style: TextStyle(color: Colors.white))),
+        children: [
+          Container(),
+          Container(),
         ],
       ),
     );

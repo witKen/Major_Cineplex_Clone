@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:major_cineplex/common/gradient_app_bar.dart';
+import 'package:major_cineplex/state_management/language_const.dart';
+import 'package:major_cineplex/state_management/languagesProvider.dart';
+import 'package:provider/provider.dart';
 
 
 class SettingScreen extends StatefulWidget {
@@ -10,9 +13,12 @@ class SettingScreen extends StatefulWidget {
 }
 
 class _SettingScreenState extends State<SettingScreen> with SingleTickerProviderStateMixin {
+  int _langIndex = 0;
+  Language _lang = Khmer();
   late TabController _tabController;
   bool isEnglish = true;
   bool isRemindMeOn = true;
+  
 
   @override
   void initState() {
@@ -40,10 +46,12 @@ class _SettingScreenState extends State<SettingScreen> with SingleTickerProvider
 
   @override
   Widget build(BuildContext context) {
+    _langIndex = context.watch<LanguagesProvider>().langIndex;
+    _lang = context.watch<LanguagesProvider>().lang;
     return Scaffold(
       backgroundColor: Colors.black,
-      appBar: const GradientAppBar(
-        title: 'Setting',
+      appBar: GradientAppBar(
+        title: _lang.settingLabel,
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -53,17 +61,24 @@ class _SettingScreenState extends State<SettingScreen> with SingleTickerProvider
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                const Text(
-                  'CHANGE LANGUAGE',
-                  style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+                Text(
+                  _lang.changeLanguage,
+                  style: TextStyle(
+                    color: Colors.white, 
+                    fontWeight: FontWeight.bold,
+                    fontSize: _langIndex == 1 ? 13 : 18
+                  ),
                 ),
                 Row(
                   children: [
                     GestureDetector(
-                      onTap: () => _toggleLanguage(false),
+                      onTap: (){ 
+                        _toggleLanguage(true);
+                        context.read<LanguagesProvider>().changeToKhmer();
+                      },
                       child: Text(
-                        'KHMER',
-                        style: TextStyle(color: !isEnglish ? Colors.amber : Colors.grey),
+                        'ខ្មែរ',
+                        style: TextStyle(color: !isEnglish ? Colors.grey : Colors.amber, fontSize: 18),
                       ),
                     ),
                     const Text(
@@ -71,10 +86,13 @@ class _SettingScreenState extends State<SettingScreen> with SingleTickerProvider
                       style: TextStyle(color: Colors.white),
                     ),
                     GestureDetector(
-                      onTap: () => _toggleLanguage(true),
+                      onTap: (){ 
+                        _toggleLanguage(false);
+                        context.read<LanguagesProvider>().changeToEnglish();
+                      },
                       child: Text(
                         'ENGLISH',
-                        style: TextStyle(color: isEnglish ? Colors.amber : Colors.grey),
+                        style: TextStyle(color: isEnglish ? Colors.grey : Colors.amber),
                       ),
                     ),
                   ],
@@ -86,9 +104,13 @@ class _SettingScreenState extends State<SettingScreen> with SingleTickerProvider
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                const Text(
-                  'REMIND ME',
-                  style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+                Text(
+                  _lang.remindMe,
+                  style: TextStyle(
+                    color: Colors.white, 
+                    fontWeight: FontWeight.bold,
+                    fontSize: _langIndex == 1 ? 13 : 18
+                  ),
                 ),
                 Switch(
                   value: isRemindMeOn,
