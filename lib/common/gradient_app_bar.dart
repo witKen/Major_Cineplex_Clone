@@ -10,7 +10,7 @@ class GradientAppBar extends StatelessWidget implements PreferredSizeWidget {
   final bool primary;
 
   const GradientAppBar({
-    Key? key,
+    super.key,
     required this.title,
     this.gradientColors = const [Color(0xFFAA0000), Color(0xFF2D0D0D)],
     this.gradientStops = const [0.0, 1.0],
@@ -18,7 +18,7 @@ class GradientAppBar extends StatelessWidget implements PreferredSizeWidget {
     this.actions,
     this.bottom,
     this.primary = true,
-  }) : super(key: key);
+  });
 
   @override
   Size get preferredSize =>
@@ -36,24 +36,14 @@ class GradientAppBar extends StatelessWidget implements PreferredSizeWidget {
         ),
       ),
       child: AppBar(
-        title: title is String
-            ? Text(
-                title.toUpperCase(),
-                style: const TextStyle(
-                  color: Color.fromARGB(255, 255, 255, 255),
-                  fontSize: 18,
-                  fontWeight: FontWeight.bold,
-                ),
-              )
-            : title,
-        // title: Text(
-        //   title,
-        //   style: const TextStyle(
-        //     color: Colors.orange,
-        //     fontSize: 24,
-        //     fontWeight: FontWeight.bold,
-        //   ),
-        // ),
+        title: Text(
+          title,
+          style: const TextStyle(
+            color: Colors.white,
+            fontSize: 24,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
         centerTitle: true,
         titleSpacing: 0.0,
         leading: leading,

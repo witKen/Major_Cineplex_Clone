@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:major_cineplex/common/gradient_app_bar.dart';
+import 'package:major_cineplex/state_management/language_const.dart';
+import 'package:major_cineplex/state_management/languagesProvider.dart';
+import 'package:provider/provider.dart';
 
 class CinemasScreen extends StatefulWidget {
-  const CinemasScreen({Key? key}) : super(key: key);
+  const CinemasScreen({super.key});
 
   @override
   _CinemasScreenState createState() => _CinemasScreenState();
@@ -10,6 +13,8 @@ class CinemasScreen extends StatefulWidget {
 
 class _CinemasScreenState extends State<CinemasScreen>
     with SingleTickerProviderStateMixin {
+  int _langIndex = 0;
+  Language _lang = Khmer();
   late TabController _tabController;
 
   @override
@@ -26,27 +31,31 @@ class _CinemasScreenState extends State<CinemasScreen>
 
   @override
   Widget build(BuildContext context) {
+    _langIndex = context.watch<LanguagesProvider>().langIndex;
+    _lang = context.watch<LanguagesProvider>().lang;
     return Scaffold(
       appBar: GradientAppBar(
-        title: 'Cinemas',
+        title: _lang.cineLabel,
         actions: [
           IconButton(
             onPressed: () {},
-            icon: const Icon(Icons.search, color: Colors.orange),
+            icon: const Icon(Icons.search, color: Colors.yellow),
           ),
         ],
         bottom: TabBar(
           controller: _tabController,
-          labelColor: Colors.orange,
+          labelColor: Colors.yellow,
           unselectedLabelColor: Colors.white,
+          dividerHeight: 0,
           tabs: const [
             Tab(text: 'FAVORITE'),
             Tab(text: 'CINEMAS'),
             Tab(text: 'SYSTEM TYPE'),
           ],
-          indicatorColor: Colors.orange,
+          indicatorColor: Colors.yellow,
         ),
       ),
+      backgroundColor: Colors.black,
       body: TabBarView(
         controller: _tabController,
         children: [
@@ -69,56 +78,75 @@ class _CinemasScreenState extends State<CinemasScreen>
       color: Colors.black,
       child: Column(
         children: [
-          // Padding(
-          //   padding: const EdgeInsets.all(8.0),
-          //   child: Row(
-          //     children: [
-          //       Icon(Icons.location_on, color: Colors.yellow),
-          //       SizedBox(width: 10),
-          //       Expanded(
-          //         child: TextButton(
-          //           onPressed: () {
-          //             // Add functionality to find nearby cinema
-          //           },
-          //           style: TextButton.styleFrom(
-          //             // backgroundColor: Colors.yellow,
-          //           ),
-          //           child: Text('Find my nearby cinema',style: TextStyle(color: Colors.white),),
-          //         ),
-          //       ),
-          //     ],
-          //   ),
-          // ),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Row(
+              children: [
+                const Icon(Icons.location_on, color: Colors.yellow),
+                const SizedBox(width: 10),
+                Expanded(
+                  child: TextButton(
+                    onPressed: () {
+                      // Add functionality to find nearby cinema
+                    },
+                    style: TextButton.styleFrom(
+                      backgroundColor: Colors.yellow,
+                    ),
+                    child: const Text('Find my nearby cinema'),
+                  ),
+                ),
+              ],
+            ),
+          ),
           Expanded(
             child: ListView(
-              children: [
+              children: const [
                 ExpansionTile(
                   // leading: Icon(Icons.location_on, color: Colors.yellow),
                   leading: Image.asset('assets/images/major_by_smart.png'),
                   title: Text(
                     'MAJOR CINEPLEX BY SMART',
                     style: TextStyle(
-                        color: Colors.white, fontWeight: FontWeight.bold),
+                      color: Colors.white, 
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
                   children: [
-                    _CinemaListTile(
-                      title: 'Major Aeon Mall Phnom Penh',
+                    ListTile(
+                      leading: Text(''),
+                      title: Text('Major Aeon Mall Phnom Penh',
+                          style: TextStyle(color: Colors.white)),
+                      trailing: Icon(Icons.star_border, color: Colors.white),
                     ),
-                    _CinemaListTile(
-                      title: 'Major Cineplex Aeon Sen Sok',
+                    ListTile(
+                      leading: Text(''),
+                      title: Text('Major Cineplex Aeon Sen Sok',
+                          style: TextStyle(color: Colors.white)),
+                      trailing: Icon(Icons.star_border, color: Colors.white),
                     ),
-                    _CinemaListTile(
-                      title: 'Major Cineplex Aeon Mean Chey',
+                    ListTile(
+                      leading: Text(''),
+                      title: Text('Major Cineplex Aeon Mean Chey',
+                          style: TextStyle(color: Colors.white)),
+                      trailing: Icon(Icons.star_border, color: Colors.white),
                     ),
-                    _CinemaListTile(
-                      title: 'Major Cineplex Sorya',
+                    ListTile(
+                      leading: Text(''),
+                      title: Text('Major Cineplex Sorya',
+                          style: TextStyle(color: Colors.white)),
+                      trailing: Icon(Icons.star_border, color: Colors.white),
                     ),
-                    _CinemaListTile(
-                      title: 'Major Platinum Siem Reap',
+                    ListTile(
+                      leading: Text(''),
+                      title: Text('Major Platinum Siem Reap',
+                          style: TextStyle(color: Colors.white)),
+                      trailing: Icon(Icons.star_border, color: Colors.white),
                     ),
-                    _CinemaListTile(
-                      title: 'Major Cineplex Big C Poipet',
-                    ),
+                    ListTile(
+                      leading: Text(''),
+                      title: Text('Major Cineplex Big C Poipet',
+                          style: TextStyle(color: Colors.white)),
+                      trailing: Icon(Icons.star_border, color: Colors.white)),
                   ],
                 ),
               ],
