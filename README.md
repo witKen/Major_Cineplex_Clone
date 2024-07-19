@@ -2,9 +2,6 @@
 
 This Project is Final Project for Mobile Application at CADT 
 
-### This is a video demo
+### Video demo
 
-<video width="560" height="315" controls>
-  <source src="assets/videos/demo_video.mp4" type="video/mp4">
-  Your browser does not support the video tag.
-</video>
+[![Major Demo](https://img.youtube.com/vi/_0cAP7RKdR0/0.jpg)](https://www.youtube.com/watch?v=_0cAP7RKdR0)
