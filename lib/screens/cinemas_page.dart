@@ -100,18 +100,18 @@ class _CinemasScreenState extends State<CinemasScreen>
           ),
           Expanded(
             child: ListView(
-              children: const [
+              children: [
                 ExpansionTile(
                   // leading: Icon(Icons.location_on, color: Colors.yellow),
                   leading: Image.asset('assets/images/major_by_smart.png'),
-                  title: Text(
+                  title: const Text(
                     'MAJOR CINEPLEX BY SMART',
                     style: TextStyle(
                       color: Colors.white, 
                       fontWeight: FontWeight.bold,
                     ),
                   ),
-                  children: [
+                  children: const [
                     ListTile(
                       leading: Text(''),
                       title: Text('Major Aeon Mall Phnom Penh',
