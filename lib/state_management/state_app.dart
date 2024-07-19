@@ -8,7 +8,7 @@ Widget providerStateApp(){
     providers: [
       ChangeNotifierProvider(create: (context) => LanguagesProvider()),
     ],
-    child: StateApp(),
+    child: const StateApp(),
   );
 }
 
@@ -17,7 +17,7 @@ class StateApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
       home: BottomBar(),
     );
   }

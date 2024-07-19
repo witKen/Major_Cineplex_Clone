@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:major_cineplex/screens/detail_screen.dart';
 import 'package:sticky_headers/sticky_headers/widget.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -249,7 +250,13 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
       itemCount: movies.length,
       itemBuilder: (context, index){
         return GestureDetector(
-          onTap: (){},
+          onTap: (){
+            Navigator.of(context).push(
+              MaterialPageRoute(
+                builder: (context) => MovieDetailScreen(title: movies[index]['title']!, image: movies[index]['image']!, date: movies[index]['date']!)
+              )
+            );
+          },
           child: Column(
             children: [
               SizedBox(
@@ -401,7 +408,13 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
               itemCount: movies.length,
               itemBuilder: (context, index) {
                 return GestureDetector(
-                  onTap: () {},
+                  onTap: () {
+                    Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (context) => MovieDetailScreen(title: movies[index]['title']!, image: movies[index]['image']!, date: movies[index]['date']!)
+                      )
+                    );
+                  },
                   child: Column(
                     children: [
                       SizedBox(

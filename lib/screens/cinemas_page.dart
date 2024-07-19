@@ -32,12 +32,12 @@ class _CinemasScreenState extends State<CinemasScreen>
         actions: [
           IconButton(
             onPressed: () {},
-            icon: const Icon(Icons.search, color: Colors.orange),
+            icon: const Icon(Icons.search, color: Colors.yellow),
           ),
         ],
         bottom: TabBar(
           controller: _tabController,
-          labelColor: Colors.orange,
+          labelColor: Colors.yellow,
           unselectedLabelColor: Colors.white,
           dividerHeight: 0,
           tabs: const [
@@ -45,7 +45,7 @@ class _CinemasScreenState extends State<CinemasScreen>
             Tab(text: 'CINEMAS'),
             Tab(text: 'SYSTEM TYPE'),
           ],
-          indicatorColor: Colors.orange,
+          indicatorColor: Colors.yellow,
         ),
       ),
       backgroundColor: Colors.black,
@@ -95,7 +95,7 @@ class _CinemasScreenState extends State<CinemasScreen>
             child: ListView(
               children: const [
                 ExpansionTile(
-                  leading: Icon(Icons.location_on, color: Colors.orange),
+                  leading: Icon(Icons.location_on, color: Colors.yellow),
                   title: Text(
                     'MAJOR CINEPLEX BY SMART',
                     style: TextStyle(

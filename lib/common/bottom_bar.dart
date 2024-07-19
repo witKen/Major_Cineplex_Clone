@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:major_cineplex/feature/home/home_screen.dart';
 import 'package:major_cineplex/screens/cinemas_page.dart';
+import 'package:major_cineplex/screens/promo_screen.dart';
+import 'package:major_cineplex/screens/setting_screen.dart';
 
 class BottomBar extends StatefulWidget {
   const BottomBar({super.key});
@@ -27,12 +29,8 @@ class _BottomBarState extends State<BottomBar> {
       children: [
         const HomeScreen(),
         const CinemasScreen(),
-        Container(
-          color: const Color.fromARGB(255, 30, 189, 233),
-        ),
-        Container(
-          color: Colors.white,
-        ),
+        PromoScreen(),
+        const SettingScreen(),
       ],
     );
   }
