@@ -102,7 +102,8 @@ class _CinemasScreenState extends State<CinemasScreen>
             child: ListView(
               children: const [
                 ExpansionTile(
-                  leading: Icon(Icons.location_on, color: Colors.yellow),
+                  // leading: Icon(Icons.location_on, color: Colors.yellow),
+                  leading: Image.asset('assets/images/major_by_smart.png'),
                   title: Text(
                     'MAJOR CINEPLEX BY SMART',
                     style: TextStyle(
@@ -159,6 +160,27 @@ class _CinemasScreenState extends State<CinemasScreen>
   Widget _buildSystemTypeTab() {
     return const Center(
       child: Text('System Type Tab', style: TextStyle(color: Colors.white)),
+    );
+  }
+}
+
+class _CinemaListTile extends StatelessWidget {
+  final String title;
+
+  const _CinemaListTile({required this.title});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      color: Colors.grey[800], // Change this to your desired grey color
+      child: ListTile(
+        // leading: Icon(Icons.location_on, color: Colors.white),
+        title: Text(
+          title,
+          style: const TextStyle(color: Colors.white),
+        ),
+        trailing: const Icon(Icons.star_border, color: Colors.white),
+      ),
     );
   }
 }

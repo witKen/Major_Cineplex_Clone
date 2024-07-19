@@ -24,10 +24,9 @@ class _BottomBarState extends State<BottomBar> {
     _langIndex = context.watch<LanguagesProvider>().langIndex;
     _lang = context.watch<LanguagesProvider>().lang;
     return Scaffold(
-      body: _buildBody(),
-      bottomNavigationBar: _buildBottomNavBar(),
-      backgroundColor: Colors.transparent
-    );
+        body: _buildBody(),
+        bottomNavigationBar: _buildBottomNavBar(),
+        backgroundColor: Colors.transparent);
   }
 
   Widget _buildBody() {

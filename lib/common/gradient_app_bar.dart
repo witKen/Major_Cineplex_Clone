@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class GradientAppBar extends StatelessWidget implements PreferredSizeWidget {
-  final String title;
+  final dynamic title;
   final List<Color> gradientColors;
   final List<double> gradientStops;
   final Widget? leading;

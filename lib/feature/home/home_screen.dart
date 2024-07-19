@@ -11,7 +11,6 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
-
   @override
   void initState() {
     super.initState();
@@ -69,12 +68,11 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
     );
   }
 
-  Widget _buildBody(){
-    return RefreshIndicator( 
+  Widget _buildBody() {
+    return RefreshIndicator(
       onRefresh: () async {
-        if (context.mounted){
-          setState(() {
-          });
+        if (context.mounted) {
+          setState(() {});
         }
       },
       child: ListView(
@@ -96,28 +94,26 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
     "https://i.ytimg.com/vi/PULiDIsBwgU/maxresdefault.jpg?sqp=-oaymwEmCIAKENAF8quKqQMa8AEB-AH-DoACuAiKAgwIABABGBMgPyh_MA8=&rs=AOn4CLCSOweUuzBtAzLzxG-ZXqkJvYIWVQ",
   ];
 
-  Widget _buildAdsRow(){
+  Widget _buildAdsRow() {
     return CarouselSlider(
-      items: ads.map((i) {
-        return Builder(
-          builder: (BuildContext context) => SizedBox(
-            width: MediaQuery.of(context).size.width,
-            child: Image.network(
-              i,
-              fit: BoxFit.fill,
-              height: 160,
+        items: ads.map((i) {
+          return Builder(
+            builder: (BuildContext context) => SizedBox(
+              width: MediaQuery.of(context).size.width,
+              child: Image.network(
+                i,
+                fit: BoxFit.fill,
+                height: 160,
+              ),
             ),
-          ),
-        );
-      }).toList(), 
-      options: CarouselOptions(
-        viewportFraction: 1,
-        height: 160,
-        autoPlay: true,
-        autoPlayInterval: const Duration(seconds: 3)
-      ));
+          );
+        }).toList(),
+        options: CarouselOptions(
+            viewportFraction: 1,
+            height: 160,
+            autoPlay: true,
+            autoPlayInterval: const Duration(seconds: 3)));
   }
-
 
   bool _isGrid = false;
   late TabController _tabController;
@@ -181,10 +177,10 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
     );
   }
 
-  Widget _buildContents(){
+  Widget _buildContents() {
     return LayoutBuilder(
       builder: (context, constraints) {
-        double maxHeight = 320 * movies.length/2;
+        double maxHeight = 320 * movies.length / 2;
         return SizedBox(
           // height: _isGrid ? maxHeight : maxHeight * 2,
           height: maxHeight,
@@ -205,7 +201,8 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
     {
       'title': 'THE WOMAN',
       'date': '18 JULY 2024',
-      'image': 'https://upload.wikimedia.org/wikipedia/en/a/a8/The_Woman_in_the_House_Across_the_Street_from_the_Girl_in_the_Window.png',
+      'image':
+          'https://upload.wikimedia.org/wikipedia/en/a/a8/The_Woman_in_the_House_Across_the_Street_from_the_Girl_in_the_Window.png',
     },
     {
       'title': 'BATMAN',
@@ -232,10 +229,9 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
       'date': '18 DECEMBER 2024',
       'image': 'https://media.titanbooks.com/catalog/products/Morbius.jpg',
     },
-    
   ];
 
-  Widget _buildNowShowing(){
+  Widget _buildNowShowing() {
     return GridView.builder(
       physics: const NeverScrollableScrollPhysics(),
       gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
@@ -472,3 +468,4 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
     );
   }
 }
+
